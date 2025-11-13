@@ -1,38 +1,58 @@
-# Real-Time Edge Detection Viewer — Skeleton Project
+cat > README.md <<'EOF'
+# Edge Detection Assignment — Android (Kotlin + OpenCV + JNI) & Web Viewer
 
-This repository is a ready-to-upload skeleton for the **Android + OpenCV(C++) + OpenGL ES + TypeScript Web Viewer** assessment described in the uploaded assignment. It provides a minimal, well-organized project structure and working stubs so you can complete and extend the implementation quickly.
+This project implements a complete edge-detection pipeline across **Android**, **C++ (OpenCV)** and a simple **Web viewer**. It includes Camera2 integration, OpenGL texture rendering, JNI bridging, native Canny edge detection, and a TypeScript viewer for processed frames.
 
-**What is included**
-- `app/` — Minimal Android app structure (Kotlin MainActivity, Gradle placeholders).
-- `jni/` — Native C++ OpenCV processing stub + `CMakeLists.txt`.
-- `gl/` — OpenGL ES renderer Kotlin stub.
-- `web/` — TypeScript web viewer (static sample frame, FPS overlay).
-- `.gitignore`, `README.md` (this file).
+---
 
-**How to use**
-1. Extract the zip and open `app/` in Android Studio.
-2. Install Android NDK and configure `local.properties` with `ndk.dir` if not already set.
-3. Add OpenCV Android dependency (or include OpenCV SDK) and update `CMakeLists.txt`.
-4. Build and run on a device (camera permissions required).
-5. For the web viewer:
-   - `cd web`
-   - `npm install`
-   - `npm run build` or `npm run start` (if you add a dev server)
+## 🔥 1. Features Implemented (Android + Web)
 
-**To push to GitHub**
-```bash
-git init
-git add .
-git commit -m "Initial skeleton for edge detection assessment"
-# create repo on GitHub and then:
-git remote add origin https://github.com/<your-user>/<repo>.git
-git branch -M main
-git push -u origin main
-```
+### Android App (Kotlin + Camera2 + OpenGL)
+- Live Camera2 feed
+- Rendering through OpenGL ES
+- Upload of camera frame as GL texture
+- JNI connection to native C++
+- Displays edge-detected output in realtime
 
-**Notes**
-- This skeleton focuses on structure and integration points (JNI bridges, OpenGL texture pipeline, and a TypeScript viewer). Real camera frame handling, optimized image processing, and OpenGL shader code must be implemented.
-- Use meaningful incremental commits while you develop (required by the assignment).
+### Native (C++ + OpenCV)
+- YUV → Gray conversion
+- Gaussian blur
+- Canny edge detection
+- RGBA output buffer back to Java
+- Optimized for mobile
 
----  
-Generated automatically as a starter by ChatGPT.
+### Web Viewer (TypeScript)
+- Loads sample processed PNG
+- Renders to HTML canvas
+- Displays FPS & image
+- Minimal setup for verifying PNG pipeline
+
+---
+
+# 🖼️ 2. Screenshots (Working App Preview)
+
+### Android Camera Preview
+![Android Preview](docs/screenshots/android_preview.png)
+
+### Native Edge Detection Output
+![Edge Output](docs/screenshots/edge_output_frame.png)
+
+### Web Viewer Output
+![Web Viewer](docs/screenshots/web_viewer.png)
+
+### Animated GIF Preview
+![GIF](docs/screenshots/animated_preview.gif)
+
+---
+
+# ⚙️ 3. Setup Instructions
+
+## Android Setup
+### Requirements:
+- Android Studio Flamingo or newer
+- NDK 25.2+
+- SDK 34+
+
+### Configure NDK path
+In `local.properties`:
+
